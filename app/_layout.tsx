@@ -7,6 +7,7 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
+import { HeaderLanguageSwitcher } from "@/components/header-language-switcher";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { useTranslation } from "@/i18n";
 import { darkColors, lightColors } from "@/theme/colors";
@@ -39,6 +40,7 @@ export default function RootLayout() {
         screenOptions={{
           headerStyle: { backgroundColor: palette.surface },
           headerTintColor: palette.text,
+          headerRight: () => <HeaderLanguageSwitcher />,
           contentStyle: { backgroundColor: palette.background },
         }}
       >
