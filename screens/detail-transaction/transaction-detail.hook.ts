@@ -1,9 +1,9 @@
 import { useLocalSearchParams } from "expo-router";
-import { useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
+import { useShallow } from "zustand/react/shallow";
 
-import { mockTransactionsResponse } from "@/mock/transaction-mock";
+import { useTransactionStore } from "@/store/transaction-store";
 import type {
-  Transaction,
   TransactionDetailRouteParams,
   TransactionDetailState,
 } from "@/types/transactions.type";
@@ -11,19 +11,55 @@ import type {
 const useTransactionDetail = () => {
   const params = useLocalSearchParams();
   const id = params.id as TransactionDetailRouteParams["id"];
+  const {
+    clearErrors,
+    clearTransactionDetail,
+    error,
+    fetchTransactionDetail,
+    isLoading,
+    transaction,
+  } = useTransactionStore(
+    useShallow((state) => ({
+      clearErrors: state.clearErrors,
+      clearTransactionDetail: state.clearTransactionDetail,
+      error: state.transactionDetailError,
+      fetchTransactionDetail: state.fetchTransactionDetail,
+      isLoading: state.isTransactionDetailLoading,
+      transaction: state.transactionDetail,
+    })),
+  );
 
   const safeId = useMemo<TransactionDetailState["safeId"]>(
     () => (Array.isArray(id) ? id[0] : id) ?? "-",
     [id],
   );
 
-  const transaction = useMemo<Transaction | undefined>(
-    () => mockTransactionsResponse.data.find((item) => item.refId === safeId),
-    [safeId],
-  );
+  const fetchTransaction = useCallback(async () => {
+    clearErrors();
+
+    if (safeId === "-") {
+      await fetchTransactionDetail(" ");
+      return;
+    }
+
+    await fetchTransactionDetail(safeId);
+  }, [clearErrors, fetchTransactionDetail, safeId]);
+
+  useEffect(() => {
+    void fetchTransaction();
+  }, [fetchTransaction]);
+
+  useEffect(() => {
+    return () => {
+      clearTransactionDetail();
+    };
+  }, [clearTransactionDetail]);
 
   return {
+    error,
     hasTransaction: Boolean(transaction),
+    isLoading,
+    retry: fetchTransaction,
     safeId,
     transaction,
   };

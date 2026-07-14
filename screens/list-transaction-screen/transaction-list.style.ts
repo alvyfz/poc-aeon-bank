@@ -12,12 +12,24 @@ const createListTransactionStyles = (
       gap: 14,
       padding: 16,
     },
+    centeredState: {
+      flex: 1,
+      justifyContent: "center",
+    },
     listContent: {
       gap: 10,
       paddingBottom: 12,
     },
     emptyState: {
       marginTop: 4,
+    },
+    sectionTitle: {
+      color: colors.primary,
+      fontSize: 11,
+      fontWeight: "800",
+      letterSpacing: 0.8,
+      marginBottom: 12,
+      marginTop: 6,
     },
     row: {
       alignItems: "center",
@@ -26,12 +38,21 @@ const createListTransactionStyles = (
       borderRadius: 14,
       borderWidth: 1,
       flexDirection: "row",
+      gap: 12,
       justifyContent: "space-between",
       paddingHorizontal: 14,
       paddingVertical: 14,
     },
     rowPressed: {
       opacity: 0.85,
+    },
+    iconWrapper: {
+      alignItems: "center",
+      backgroundColor: colors.background,
+      borderRadius: 999,
+      height: 36,
+      justifyContent: "center",
+      width: 36,
     },
     rowText: {
       flex: 1,
@@ -45,6 +66,12 @@ const createListTransactionStyles = (
     subtitle: {
       color: colors.secondary,
       fontSize: typography.caption.fontSize,
+    },
+    incomingIcon: {
+      color: colors.success,
+    },
+    outgoingIcon: {
+      color: colors.error,
     },
   });
 

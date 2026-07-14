@@ -12,6 +12,10 @@ const createTransactionDetailStyles = (
       padding: 16,
       gap: 14,
     },
+    centeredState: {
+      flex: 1,
+      justifyContent: "center",
+    },
     card: {
       backgroundColor: colors.surface,
       borderColor: colors.border,
