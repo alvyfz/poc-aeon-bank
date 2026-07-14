@@ -1,4 +1,4 @@
-import { useAppTheme } from "@/theme/useAppTheme";
+import { useAppTheme } from "@/theme/use-app-theme";
 import { StyleSheet } from "react-native";
 
 const createTransactionDetailStyles = (
@@ -26,10 +26,18 @@ const createTransactionDetailStyles = (
       fontSize: typography.caption.fontSize,
       fontWeight: "700",
     },
+    section: {
+      gap: 4,
+    },
     value: {
       color: colors.text,
       fontSize: typography.title.fontSize,
       fontWeight: "800",
+    },
+    description: {
+      color: colors.text,
+      fontSize: typography.body.fontSize,
+      fontWeight: "600",
     },
   });
 

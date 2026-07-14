@@ -1,4 +1,4 @@
-import { useAppTheme } from "@/theme/useAppTheme";
+import { useAppTheme } from "@/theme/use-app-theme";
 import { StyleSheet } from "react-native";
 
 const createListTransactionStyles = (
@@ -15,6 +15,9 @@ const createListTransactionStyles = (
     listContent: {
       gap: 10,
       paddingBottom: 12,
+    },
+    emptyState: {
+      marginTop: 4,
     },
     row: {
       alignItems: "center",
@@ -42,11 +45,6 @@ const createListTransactionStyles = (
     subtitle: {
       color: colors.secondary,
       fontSize: typography.caption.fontSize,
-    },
-    chevron: {
-      color: colors.secondary,
-      fontSize: 22,
-      marginLeft: 12,
     },
   });
 

@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, type TextStyle } from "react-native";
 
 import { useTranslation } from "@/i18n";
-import { useAppTheme } from "@/theme/useAppTheme";
+import { useAppTheme } from "@/theme/use-app-theme";
 import { formatCurrency } from "@/utils/currency";
 
 interface AmountTextProps {

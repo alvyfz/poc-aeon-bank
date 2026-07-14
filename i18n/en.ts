@@ -9,5 +9,8 @@ export const en = {
     amount: "Amount",
     search: "Search",
     searchPlaceholder: "Search",
+    back: "Back",
+    noTransactionsFound: "No transactions found",
+    transactionNotFound: "Transaction not found",
   },
 };

@@ -9,7 +9,7 @@ import {
   type ViewStyle,
 } from "react-native";
 
-import { useAppTheme } from "@/theme/useAppTheme";
+import { useAppTheme } from "@/theme/use-app-theme";
 
 type ButtonVariant =
   | "primary"

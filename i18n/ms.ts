@@ -9,5 +9,8 @@ export const ms = {
     amount: "Jumlah",
     search: "Cari",
     searchPlaceholder: "Cari",
+    back: "Kembali",
+    noTransactionsFound: "Tiada transaksi ditemui",
+    transactionNotFound: "Transaksi tidak ditemui",
   },
 };

@@ -1,6 +1,6 @@
 import { en } from "@/i18n/en";
 import { ms } from "@/i18n/ms";
-import { usePreferencesStore, type Language } from "@/store/preferencesStore";
+import { usePreferencesStore, type Language } from "@/store/preferences-store";
 
 export const dictionaries = {
   en,

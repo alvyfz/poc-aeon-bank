@@ -1,3 +1,3 @@
-import ListScreen from "@/screens/list-transaction-screen/transaction-list.screen";
+import { ListScreen } from "@/screens/list-transaction-screen/transaction-list.screen";
 
 export default ListScreen;

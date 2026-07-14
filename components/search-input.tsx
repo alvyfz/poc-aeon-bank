@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import React, { useState } from "react";
 import {
   StyleSheet,
   TextInput,
@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 import { useTranslation } from "@/i18n";
-import { useAppTheme } from "@/theme/useAppTheme";
+import { useAppTheme } from "@/theme/use-app-theme";
 
 interface SearchInputProps extends Omit<TextInputProps, "style"> {
   containerStyle?: ViewStyle;
@@ -35,7 +35,11 @@ export function SearchInput({
 
   return (
     <View
-      style={[styles.container, isFocused && styles.focusedContainer, containerStyle]}
+      style={[
+        styles.container,
+        isFocused && styles.focusedContainer,
+        containerStyle,
+      ]}
       testID={testID}
     >
       <MaterialIcons
