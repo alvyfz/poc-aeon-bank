@@ -9,8 +9,14 @@ const createListTransactionStyles = (
     container: {
       backgroundColor: colors.background,
       flex: 1,
-      gap: 14,
       padding: 16,
+    },
+    filterScroller: {
+      marginTop: 12,
+      marginBottom: 14,
+    },
+    filterContent: {
+      alignItems: "flex-start",
     },
     centeredState: {
       flex: 1,

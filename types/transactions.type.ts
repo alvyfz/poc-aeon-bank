@@ -1,6 +1,7 @@
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type TransactionType = "incoming" | "outgoing";
+export type TransactionTypeFilter = "all" | TransactionType;
 
 export interface Transaction {
   refId: string;

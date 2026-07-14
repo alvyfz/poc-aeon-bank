@@ -1,6 +1,7 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import { useTranslation } from "@/i18n";
 import { usePreferencesStore, type Language } from "@/store/preferences-store";
 import { useAppTheme } from "@/theme/use-app-theme";
 
@@ -8,6 +9,7 @@ const LANGUAGES: Language[] = ["en", "ms"];
 
 export function HeaderLanguageSwitcher() {
   const { colors, typography } = useAppTheme();
+  const { t } = useTranslation();
   const language = usePreferencesStore((state) => state.language);
   const setLanguage = usePreferencesStore((state) => state.setLanguage);
   const styles = createStyles(colors, typography);
@@ -19,20 +21,14 @@ export function HeaderLanguageSwitcher() {
 
         return (
           <Pressable
-            accessibilityLabel={`Switch language to ${item.toUpperCase()}`}
+            accessibilityLabel={`${t.common.switchLanguageTo} ${item.toUpperCase()}`}
             accessibilityRole="button"
             key={item}
             onPress={() => setLanguage(item)}
-            style={[
-              styles.option,
-              isActive && styles.activeOption,
-            ]}
+            style={[styles.option, isActive && styles.activeOption]}
           >
             <Text
-              style={[
-                styles.optionLabel,
-                isActive && styles.activeOptionLabel,
-              ]}
+              style={[styles.optionLabel, isActive && styles.activeOptionLabel]}
             >
               {item.toUpperCase()}
             </Text>

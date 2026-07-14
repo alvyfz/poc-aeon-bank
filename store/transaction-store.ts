@@ -189,10 +189,7 @@ export function groupTransactionsByDate(
     .sort(([left], [right]) => right.localeCompare(left))
     .map(([key, items]) => ({
       key,
-      title:
-        key === "UNKNOWN_DATE"
-          ? "UNKNOWN DATE"
-          : formatTransactionGroupTitle(items[0]?.transferDate ?? key),
+      title: key,
       data: items,
     }));
 }
@@ -201,21 +198,6 @@ function getSafeTimestamp(value: string) {
   const timestamp = new Date(value).getTime();
 
   return Number.isNaN(timestamp) ? 0 : timestamp;
-}
-
-function formatTransactionGroupTitle(value: string) {
-  const date = new Date(value);
-
-  if (Number.isNaN(date.getTime())) {
-    return "UNKNOWN DATE";
-  }
-
-  return new Intl.DateTimeFormat("en-MY", {
-    month: "long",
-    year: "numeric",
-  })
-    .format(date)
-    .toUpperCase();
 }
 
 function createStorePatch(

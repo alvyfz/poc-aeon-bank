@@ -3,10 +3,10 @@ import { AppButton } from "@/components/app-button";
 import { EmptyState } from "@/components/empty-state";
 import { useTranslation } from "@/i18n";
 import { useAppTheme } from "@/theme/use-app-theme";
-import type { Transaction } from "@/types/transactions.type";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { router } from "expo-router";
 import { ActivityIndicator, Text, View } from "react-native";
+import { TransactionDetailRow } from "./transaction-detail-row";
 import { useTransactionDetail } from "./transaction-detail.hook";
 import { createTransactionDetailStyles } from "./transaction-detail.style";
 
@@ -35,23 +35,23 @@ function TransactionDetailScreen() {
 
         {transaction ? (
           <>
-            <DetailRow
-              label="Transfer"
+            <TransactionDetailRow
+              label={t.detail.transfer}
               value={transaction.transferName}
               styles={styles}
             />
-            <DetailRow
-              label="Recipient"
+            <TransactionDetailRow
+              label={t.detail.recipient}
               value={transaction.recipientName}
               styles={styles}
             />
-            <DetailRow
-              label="Date"
+            <TransactionDetailRow
+              label={t.detail.date}
               value={transaction.transferDate}
               styles={styles}
             />
             <View style={styles.section}>
-              <Text style={styles.title}>Amount</Text>
+              <Text style={styles.title}>{t.common.amount}</Text>
               <AmountText amount={transaction.amount} size="large" />
             </View>
           </>
@@ -84,26 +84,6 @@ function TransactionDetailScreen() {
       ) : (
         <AppButton label={t.common.tryAgain} onPress={() => void retry()} />
       )}
-    </View>
-  );
-}
-
-function DetailRow({
-  label,
-  value,
-  styles,
-}: {
-  label: string;
-  value:
-    | Transaction["transferName"]
-    | Transaction["recipientName"]
-    | Transaction["transferDate"];
-  styles: ReturnType<typeof createTransactionDetailStyles>;
-}) {
-  return (
-    <View style={styles.section}>
-      <Text style={styles.title}>{label}</Text>
-      <Text style={styles.description}>{value}</Text>
     </View>
   );
 }
