@@ -3,7 +3,7 @@ import { router } from "expo-router";
 import React from "react";
 import { Pressable, Text, View } from "react-native";
 
-import { AmountText } from "@/components/ammount-text";
+import { AmountText } from "@/components/amount-text";
 import { useTranslation } from "@/i18n";
 import type { Transaction } from "@/types/transactions.type";
 

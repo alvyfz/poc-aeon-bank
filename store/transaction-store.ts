@@ -200,6 +200,9 @@ function getSafeTimestamp(value: string) {
   return Number.isNaN(timestamp) ? 0 : timestamp;
 }
 
+// Explicitly merge meta-state values to preserve Zustand's shallow comparison behavior:
+// Always carry over existing values from the current state if they are not explicitly updated in the patch.
+// This prevents unintended resets of loading/error states and ensures only the explicitly patched properties change
 function createStorePatch(
   currentState: TransactionState,
   patch: TransactionStoreStatePatch,

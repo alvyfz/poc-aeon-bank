@@ -54,7 +54,7 @@ function ListScreen() {
 
       {isLoading ? (
         <View style={styles.centeredState}>
-          <ActivityIndicator size="large" />
+          <ActivityIndicator />
         </View>
       ) : error ? (
         <View style={styles.centeredState}>

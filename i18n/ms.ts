@@ -9,16 +9,14 @@ export const ms = {
     transfer: "Pemindahan",
     recipient: "Penerima",
     date: "Tarikh",
+    referenceId: "ID Rujukan",
+    copyReferenceId: "Salin ID Rujukan",
+    shareReceipt: "Kongsi Resit",
   },
   list: {
     all: "Semua",
   },
   transactionType: {
-    incoming: "Masuk",
-    outgoing: "Keluar",
-  },
-  transactionList: {
-    all: "Semua",
     incoming: "Masuk",
     outgoing: "Keluar",
   },
@@ -33,6 +31,7 @@ export const ms = {
     noTransactionsFound: "Tiada transaksi ditemui",
     transactionNotFound: "Transaksi tidak ditemui",
     unknownDate: "Tarikh tidak diketahui",
+    copiedToClipboard: "Disalin ke papan klip",
     switchLanguageTo: "Tukar bahasa ke",
   },
 };

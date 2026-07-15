@@ -29,10 +29,35 @@ const useTransactionDetail = () => {
     })),
   );
 
+  const transactionDate = transaction
+    ? formatTransactionDateTime(transaction.transferDate)
+    : undefined;
+
   const safeId = useMemo<TransactionDetailState["safeId"]>(
     () => (Array.isArray(id) ? id[0] : id) ?? "-",
     [id],
   );
+
+  function formatTransactionDateTime(value: string) {
+    const date = new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+      return undefined;
+    }
+
+    return {
+      date: new Intl.DateTimeFormat("en-MY", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      }).format(date),
+      time: new Intl.DateTimeFormat("en-MY", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      }).format(date),
+    };
+  }
 
   const fetchTransaction = useCallback(async () => {
     clearErrors();
@@ -62,6 +87,7 @@ const useTransactionDetail = () => {
     retry: fetchTransaction,
     safeId,
     transaction,
+    transactionDate,
   };
 };
 

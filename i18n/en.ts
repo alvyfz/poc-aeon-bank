@@ -9,16 +9,14 @@ export const en = {
     transfer: "Transfer",
     recipient: "Recipient",
     date: "Date",
+    referenceId: "Reference ID",
+    copyReferenceId: "Copy reference ID",
+    shareReceipt: "Share Receipt",
   },
   list: {
     all: "All",
   },
   transactionType: {
-    incoming: "Incoming",
-    outgoing: "Outgoing",
-  },
-  transactionList: {
-    all: "All",
     incoming: "Incoming",
     outgoing: "Outgoing",
   },
@@ -33,6 +31,7 @@ export const en = {
     noTransactionsFound: "No transactions found",
     transactionNotFound: "Transaction not found",
     unknownDate: "Unknown date",
+    copiedToClipboard: "Copied to clipboard",
     switchLanguageTo: "Switch language to",
   },
 };
