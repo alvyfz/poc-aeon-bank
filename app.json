@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "aeon_bank",
-    "slug": "aeon_bank",
+    "slug": "poc-aeon-bank",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -43,6 +43,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "b0a4bdf5-6572-41a8-b1eb-3cd54a5d38e7"
+      }
+    },
+    "owner": "alvyfz"
   }
 }
