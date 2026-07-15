@@ -1,5 +1,5 @@
 {
-  "name": "aeon_bank",
+  "name": "poc-aeon-bank",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
