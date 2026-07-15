@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useShallow } from "zustand/react/shallow";
 
+import { useDebounce } from "@/hooks/use-debounce";
 import {
   groupTransactionsByDate,
   useTransactionStore,
 } from "@/store/transaction-store";
-import { useAppTheme } from "@/theme/use-app-theme";
 import type {
   Transaction,
   TransactionListState,
@@ -13,14 +13,12 @@ import type {
   TransactionTypeFilter,
 } from "@/types/transactions.type";
 
-import { createListTransactionStyles } from "./transaction-list.style";
-
 const useTransactionList = () => {
   const [query, setQuery] = useState("");
+  const debouncedQuery = useDebounce(query, 300);
   const [selectedFilter, setSelectedFilter] =
     useState<TransactionTypeFilter>("all");
-  const { colors, typography } = useAppTheme();
-  const styles = createListTransactionStyles(colors, typography);
+
   const {
     clearErrors,
     error,
@@ -48,7 +46,7 @@ const useTransactionList = () => {
   }, [transactionSections, transactions]);
 
   const filtered = useMemo<Transaction[]>(() => {
-    const q = query.trim().toLowerCase();
+    const q = debouncedQuery.trim().toLowerCase();
     return transactions.filter((item) => {
       const matchesType =
         selectedFilter === "all"
@@ -65,20 +63,20 @@ const useTransactionList = () => {
 
       return matchesType && matchesQuery;
     });
-  }, [query, selectedFilter, transactions]);
+  }, [debouncedQuery, selectedFilter, transactions]);
 
   const filteredSections = useMemo<TransactionSection[]>(() => {
-    if (!query.trim() && selectedFilter === "all") {
+    if (!debouncedQuery.trim() && selectedFilter === "all") {
       return groupedTransactions;
     }
 
     return groupTransactionsByDate(filtered);
-  }, [filtered, groupedTransactions, query, selectedFilter]);
+  }, [debouncedQuery, filtered, groupedTransactions, selectedFilter]);
 
   const state = useMemo<TransactionListState>(
     () => ({
       filters: {
-        query: query || undefined,
+        query: debouncedQuery || undefined,
         types: selectedFilter === "all" ? undefined : [selectedFilter],
       },
       items: filtered,
@@ -87,7 +85,14 @@ const useTransactionList = () => {
       isLoading,
       error: error ?? undefined,
     }),
-    [error, filtered, filteredSections, isLoading, query, selectedFilter],
+    [
+      debouncedQuery,
+      error,
+      filtered,
+      filteredSections,
+      isLoading,
+      selectedFilter,
+    ],
   );
 
   const retry = useCallback(async () => {
@@ -111,7 +116,6 @@ const useTransactionList = () => {
     retry,
     setSelectedFilter,
     setQuery,
-    styles,
     hasResults: state.hasResults,
   };
 };

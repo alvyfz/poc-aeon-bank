@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, type TextStyle } from "react-native";
 
+import { useAppTheme } from "@/hooks/use-app-theme";
 import { useTranslation } from "@/i18n";
-import { useAppTheme } from "@/theme/use-app-theme";
 import { formatCurrency } from "@/utils/currency";
 
 interface AmountTextProps {

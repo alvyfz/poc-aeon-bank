@@ -9,8 +9,8 @@ import {
   type ViewStyle,
 } from "react-native";
 
+import { useAppTheme } from "@/hooks/use-app-theme";
 import { useTranslation } from "@/i18n";
-import { useAppTheme } from "@/theme/use-app-theme";
 
 interface SearchInputProps extends Omit<TextInputProps, "style"> {
   containerStyle?: ViewStyle;

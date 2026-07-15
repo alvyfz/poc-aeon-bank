@@ -1,8 +1,8 @@
 import { AmountText } from "@/components/amount-text";
 import { AppButton } from "@/components/app-button";
 import { EmptyState } from "@/components/empty-state";
+import { useAppTheme } from "@/hooks/use-app-theme";
 import { useTranslation } from "@/i18n";
-import { useAppTheme } from "@/theme/use-app-theme";
 import { copyToClipboard } from "@/utils/clipboard";
 import { formatCurrency } from "@/utils/currency";
 import { buildShareMessage, shareContent } from "@/utils/share";

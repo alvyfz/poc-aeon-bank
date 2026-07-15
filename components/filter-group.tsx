@@ -8,7 +8,7 @@ import {
   type ViewStyle,
 } from "react-native";
 
-import { useAppTheme } from "@/theme/use-app-theme";
+import { useAppTheme } from "@/hooks/use-app-theme";
 
 export interface FilterGroupOption<TValue extends string> {
   label: string;

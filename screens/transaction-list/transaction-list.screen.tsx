@@ -11,8 +11,10 @@ import type {
   TransactionTypeFilter,
 } from "@/types/transactions.type";
 
+import { useAppTheme } from "@/hooks/use-app-theme";
 import { TransactionListItem } from "./transaction-list-item";
 import { useTransactionList } from "./transaction-list.hook";
+import { createListTransactionStyles } from "./transaction-list.style";
 import { TransactionSectionHeader } from "./transaction-section-header";
 
 function ListScreen() {
@@ -32,8 +34,10 @@ function ListScreen() {
     selectedFilter,
     setSelectedFilter,
     setQuery,
-    styles,
   } = useTransactionList();
+
+  const { colors, typography } = useAppTheme();
+  const styles = createListTransactionStyles(colors, typography);
 
   return (
     <View style={styles.container}>
@@ -93,3 +97,4 @@ function ListScreen() {
 }
 
 export { ListScreen };
+

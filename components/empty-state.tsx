@@ -2,7 +2,7 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import React from "react";
 import { StyleSheet, Text, View, type ViewStyle } from "react-native";
 
-import { useAppTheme } from "@/theme/use-app-theme";
+import { useAppTheme } from "@/hooks/use-app-theme";
 
 interface EmptyStateProps {
   title: string;
@@ -28,7 +28,9 @@ export function EmptyState({
         <MaterialIcons color={colors.primary} name={iconName} size={22} />
       </View>
       <Text style={styles.title}>{title}</Text>
-      {description ? <Text style={styles.description}>{description}</Text> : null}
+      {description ? (
+        <Text style={styles.description}>{description}</Text>
+      ) : null}
     </View>
   );
 }

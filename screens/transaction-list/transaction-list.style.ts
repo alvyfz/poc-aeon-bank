@@ -1,4 +1,4 @@
-import { useAppTheme } from "@/theme/use-app-theme";
+import { useAppTheme } from "@/hooks/use-app-theme";
 import { StyleSheet } from "react-native";
 
 const createListTransactionStyles = (

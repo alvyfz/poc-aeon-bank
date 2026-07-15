@@ -1,9 +1,9 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import { useAppTheme } from "@/hooks/use-app-theme";
 import { useTranslation } from "@/i18n";
 import { usePreferencesStore, type Language } from "@/store/preferences-store";
-import { useAppTheme } from "@/theme/use-app-theme";
 
 const LANGUAGES: Language[] = ["en", "ms"];
 
